@@ -1,3 +1,5 @@
+// create div for list of links
+
 // create form elements
 const form = document.createElement("form");
 form.className = "form-inline";
@@ -10,7 +12,12 @@ document.getElementById("submitButton").addEventListener("click", ()=> contentDi
 // validate form (fields are required)
 
 
-// when use submits form, link is added to list
+// success message appears and disappears after 2 seconds
+
+
+// when user submits form, link is added to list
+
+
 
 
 // create 3 prepopulated links
@@ -32,10 +39,17 @@ const defaultLinks = [
 	 }
 ];
 
+const displayDefaultLinks = defaultLinks.map(link => {
+	const linkDiv = document.createElement("div");
+	linkDiv.className = "link";
+	linkDiv.innerHTML = `<h4 class="linkHeadLine"><a href="${link.url}" class="linkTitle">${link.title}</a><span class="linkUrl">${link.title}</span></h4><span class="linkAuthor">Submitted by ${link.user}</span>`;
+	contentDiv.append(linkDiv);
+});
 
 
 
 
 
-// success message appears and disappears after 2 seconds
+
+
 
