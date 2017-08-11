@@ -45,6 +45,9 @@ document.getElementById("submitButton").addEventListener("click", ()=> {
 			linkDiv.append(spanAuthor);
 		}
 
+		// remove the form from the page
+		contentDiv.removeChild(document.querySelector("form"));
+		
 		// success message appears and disappears after 2 seconds
 		
 		
