@@ -12,13 +12,11 @@ document.getElementById("submitButton").addEventListener("click", ()=> {
 		const author = document.getElementById("formAuthor").value;
 		const title = document.getElementById("formTitle").value;
 		const url = document.getElementById("formUrl").value;
-
 		if(author !== null && title !== null && url !== null){
 			const linkDiv = document.createElement("div");
 			linkDiv.className = "link";
 			const h4Element = document.createElement("h4");
 			h4Element.className = "linkHeadLine";
-			console.log("form complete");
 			contentDiv.append(linkDiv);
 			const linkElement = document.createElement("a");
 			linkElement.setAttribute("href", url);
@@ -35,28 +33,27 @@ document.getElementById("submitButton").addEventListener("click", ()=> {
 			const spanAuthor = document.createElement("span");
 			spanAuthor.className = "linkAuthor";
 			spanAuthor.textContent = `Submitted by ${author}`;
-
 			// when user submits form, link is added to list
-
 			contentDiv.insertBefore(linkDiv, contentDiv.childNodes[1]);
 			linkDiv.append(h4Element);
 			h4Element.append(linkElement);
 			h4Element.append(spanUrl);
 			linkDiv.append(spanAuthor);
 		}
-
 		// remove the form from the page
 		contentDiv.removeChild(document.querySelector("form"));
-		
-		// success message appears and disappears after 2 seconds
-		
-		
+		// success message appears..
+		const successMsg = document.createElement("div");
+		successMsg.className = "alert alert-success";
+		successMsg.setAttribute("role", "alert");
+		successMsg.textContent = `The link ${title} has successfully been added`;
+		contentDiv.insertBefore(successMsg, contentDiv.childNodes[0]);
+		// and disappears after 2 seconds
+		setTimeout(() => {
+			contentDiv.removeChild(document.getElementsByClassName("alert")[0]);
+		}, 2000);
 	});
 });
-
-
-
-
 
 // create 3 prepopulated links
 const defaultLinks = [
